@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>¡Habilidades! - Frutiger Eco</title>
+    <style>
+        /* FONDO PRINCIPAL: Cielo azul claro degradado */
+        body {
+            background: linear-gradient(180deg, #d8f3ff 0%, #ffffff 100%);
+            font-family: 'Segoe UI', 'Frutiger LT Std', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            min-height: 100vh;
+        }
+
+        /* ESTILOS COMUNES PARA CAJAS (EFECTO VIDRIO) */
+        header, nav, section, aside, footer {
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* FILA 1: Header con Texto Arial Grande */
+        header {
+            background: linear-gradient(135deg, #42a5f5 0%, #64b5f6 50%, #81d4fa 100%);
+            height: 150px;
+            justify-content: space-between;
+            padding: 20px 40px;
+        }
+
+        header h1 {
+            font-family: Arial, sans-serif;
+            font-size: 3.5rem;
+            margin: 0;
+            font-weight: bold;
+            color: white;
+        }
+
+        .header-img {
+            background: linear-gradient(135deg, #fff9c4 0%, #fffde7 100%);
+            width: 30%;
+            height: 80%;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            color: #333;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+        }
+
+        /* FILA 2: Nav con Enlaces Elementales */
+        nav {
+            background: rgba(255, 255, 255, 0.4);
+            height: 60px;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.2rem;
+            transition: transform 0.2s ease;
+        }
+
+        nav a:hover {
+            transform: scale(1.1);
+        }
+
+        /* Degradados de texto para los tipos */
+        .fuego {
+            background: linear-gradient(to bottom, #ff0000, #ffcc00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .agua {
+            background: linear-gradient(to bottom, #0033cc, #00ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hoja {
+            background: linear-gradient(to bottom, #009900, #ccff33);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+	.magia {
+            background: linear-gradient(to bottom, #000000, #9b59b6); /* Negro a Morado */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tierra {
+            background: linear-gradient(to bottom, #f1c40f, #8b4513); /* Amarillo a Marrón Tierra */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tecnologia {
+            background: linear-gradient(to bottom, #e0e0e0, #7f8c8d); /* Plateado a Gris Metal */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+       .main-content {
+            display: flex;
+            gap: 15px;
+            /* Quitamos height: 300px; y usamos min-height */
+            min-height: 400px; 
+            height: auto; /* Esto permite que crezca si hay muchos personajes */
+        }        
+section {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2980b9 100%);
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 20px;
+            border-radius: 12px;
+            
+            /* ESTO ES LO MÁS IMPORTANTE */
+            max-height: 800px; /* Tú decides qué tan larga quieres la lista */
+            overflow-y: auto;  /* Si hay más de 600px de personajes, sale el scroll */
+            overflow-x: hidden; /* Evita que se mueva hacia los lados */
+        }
+        aside {
+    background: linear-gradient(135deg, #fff176 0%, #ffeb3b 50%, #fbc02d 100%);
+    flex: 1;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: inset 0 0 15px rgba(255,255,255,0.8), 0 5px 15px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #444; /* Texto oscuro para que resalte en el amarillo */
+}
+       footer {
+    background: linear-gradient(90deg, #66bb6a 0%, #81c784 50%, #66bb6a 100%);
+    height: 60px;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    border-top: 2px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
+    color: white;
+}
+
+/* Ajuste para que el section sea un contenedor de fichas */
+        section {
+            background: rgba(255, 255, 255, 0.1);
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 20px;
+            overflow-y: auto; /* Por si añades muchos personajes */
+        }
+
+        .personaje-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(5px);
+            border-radius: 10px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .personaje-card:hover {
+            transform: translateX(10px); /* Efecto de deslizamiento al pasar el mouse */
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .nombre-personaje {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #1a1a1a;
+            text-shadow: none; /* Texto claro para lectura fácil */
+        }
+
+        .tag-tipo {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* Colores de los tags */
+        .tag-fuego { background: #ff4d4d; color: white; box-shadow: 0 0 8px #ff4d4d; }
+        .tag-hoja { background: #4caf50; color: white; box-shadow: 0 0 8px #4caf50; }
+        .tag-agua { background: #2196f3; color: white; box-shadow: 0 0 8px #2196f3; }
+
+/* Nuevos Tags Elementales */
+        .tag-magia { background: linear-gradient(135deg, #000000, #8e44ad); color: white; box-shadow: 0 0 8px #8e44ad; }
+        .tag-tecnologia { background: linear-gradient(135deg, #bdc3c7, #2c3e50); color: white; box-shadow: 0 0 8px #7f8c8d; }
+        .tag-tierra { background: linear-gradient(135deg, #f39c12, #5d4037); color: white; box-shadow: 0 0 8px #8b4513; }
+    </style>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Habilidades! - Bootstrap & Frutiger Eco</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        /* MANTENIEMOS TU ESTÉTICA FRUTIGER ECO */
+        body {
+            background: linear-gradient(180deg, #d8f3ff 0%, #ffffff 100%);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        /* Efecto Vidrio para cajas */
+        .glass-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #42a5f5 0%, #64b5f6 50%, #81d4fa 100%);
+            min-height: 150px;
+        }
+
+        header h1 { font-weight: bold; font-size: 3rem; }
+
+        .header-img {
+            background: linear-gradient(135deg, #fff9c4 0%, #fffde7 100%);
+            width: 150px; height: 100px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        /* Nav personalizado sobre Bootstrap */
+        .nav-link-custom {
+            font-weight: 900;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        /* Tus degradados de texto */
+        .fuego { background: linear-gradient(#ff0000, #ffcc00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .agua { background: linear-gradient(#0033cc, #00ffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hoja { background: linear-gradient(#009900, #ccff33); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .magia { background: linear-gradient(#000000, #9b59b6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .tierra { background: linear-gradient(#f1c40f, #8b4513); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .tecnologia { background: linear-gradient(#e0e0e0, #7f8c8d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        section {
+            background: rgba(255, 255, 255, 0.1) !important;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .personaje-card {
+            background: rgba(255, 255, 255, 0.3) !important;
+            border: 1px solid rgba(255, 255, 255, 0.5) !important;
+            transition: 0.3s;
+            margin-bottom: 10px;
+        }
+
+        .personaje-card:hover { transform: scale(1.02); background: rgba(255, 255, 255, 0.5) !important; }
+
+        .tag-tipo {
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            padding: 5px 15px;
+        }
+
+        aside {
+            background: linear-gradient(135deg, #fff176 0%, #ffeb3b 100%) !important;
+            color: #444 !important;
+            text-shadow: none !important;
+        }
+
+        footer {
+            background: linear-gradient(90deg, #66bb6a 0%, #81c784 100%) !important;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container py-3">
+    <header class="glass-box d-flex justify-content-between align-items-center mb-3">
+        <h1>¡Habilidades!</h1>
+        <div class="header-img">
+            <img src="file:///D:/backup/C/ㅤㅤ/Colegio/Tecnología/Semana 5/Actividad 5 Actividad de Aprendizaje/logo del anime.png" alt="Logo" style="width:100%; height:100%; object-fit: contain;">
+        </div>
+    </header>
+
+    <nav class="glass-box d-flex flex-wrap justify-content-center gap-4 mb-3" style="min-height: auto; padding: 15px;">
+        <a href="index5.html" class="nav-link-custom fuego">Tipo Fuego</a>
+        <a href="index6.html" class="nav-link-custom agua">Tipo Agua</a>
+        <a href="index7.html" class="nav-link-custom hoja">Tipo Hoja</a>
+        <a href="index8.html" class="nav-link-custom magia">Magia</a>
+        <a href="index9.html" class="nav-link-custom tierra">Tierra</a>
+        <a href="index10.html" class="nav-link-custom tecnologia">Tecnología</a>
+    </nav>
+
+    <div class="row g-3">
+        <section class="col-md-8 glass-box">
+            <h2 class="h4 text-dark mb-4">Personajes Principales</h2>
+            
+            <div class="card personaje-card p-3 d-flex flex-row justify-content-between align-items-center text-dark">
+                <span>Taoku Raokhang <small class="text-muted">(Kaosu no Hoseki)</small></span>
+                <span class="tag-tipo bg-danger text-white">FUEGO</span>
+            </div>
+            
+            <div class="card personaje-card p-3 d-flex flex-row justify-content-between align-items-center text-dark">
+                <span>Minami Kukou <small class="text-muted">(Kaosu no Hoseki)</small></span>
+                <span class="tag-tipo bg-success text-white">HOJA</span>
+            </div>
+
+            <div class="card personaje-card p-3 d-flex flex-row justify-content-between align-items-center text-dark">
+                <span>Mizuki Nakamura <small class="text-muted">(Kaosu no Hoseki)</small></span>
+                <span class="tag-tipo bg-primary text-white">AGUA</span>
+            </div>
+
+            <div class="card personaje-card p-3 d-flex flex-row justify-content-between align-items-center text-dark">
+                <span>Gojo Satoru <small class="text-muted">(JJK)</small></span>
+                <span class="tag-tipo bg-dark text-white">MAGIA</span>
+            </div>
+
+            <div class="card personaje-card p-3 d-flex flex-row justify-content-between align-items-center text-dark">
+                <span>Genos <small class="text-muted">(OPM)</small></span>
+                <span class="tag-tipo bg-secondary text-white">TECNO</span>
+            </div>
+
+            </section>
+
+        <aside class="col-md-4 glass-box">
+            <h3 class="h5 mb-3 border-bottom pb-2">Sistema Elemental</h3>
+            <ul class="list-unstyled">
+                <li>🔥 <b>Fuego:</b> Ataque y Poder.</li>
+                <li>💧 <b>Agua:</b> Fluidez y Técnica.</li>
+                <li>🍃 <b>Hoja:</b> Agilidad y Naturaleza.</li>
+                <li>✨ <b>Magia:</b> Energía Espiritual.</li>
+                <li>🌍 <b>Tierra:</b> Resistencia Física.</li>
+                <li>⚙️ <b>Tecno:</b> Mejora Mecánica.</li>
+            </ul>
+        </aside>
+    </div>
+
+    <footer class="glass-box text-center py-3">
+        <strong>© 2026 Kaosu no Hoseki Project</strong> | 
+        Diseñado por: Miguel Pino - 10mo Grado
+    </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
